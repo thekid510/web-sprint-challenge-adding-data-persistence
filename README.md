@@ -82,6 +82,7 @@ Build an API inside the `api` folder with endpoints for:
   - Even though `project_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `[{"project_id":1,"project_name":"bar","project_description":null,"project_completed":false}]`
 
+
 - [ ] `[POST] /api/tasks`
   - Even though `task_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `{"task_id":1,"task_description":"baz","task_notes":null,"task_completed":false,"project_id:1}`
@@ -111,15 +112,19 @@ Build an API inside the `api` folder with endpoints for:
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain the difference between Relational Databases and SQL.
-RDBMS is the software and 
-SQL is whats used to query the data
+
+SQL is used to query and retrieve data and editing data by Updating and Deleting and Creating new records. Relation Databases are written in SQL 
+and provide functionality such as indexing and referential integrity to assure data consistency
 
 2. Why do tables need a Primary Key?
-To have our tables ready to be joinable to another table
+
+Each table needs a PK to be able to ensure row accessibility , if you choose the right PK you can specify its value which lets you query each table row individually and change each row with out affecting other rows in the same table.
 
 3. What is the name given to a table column that references the Primary Key on another table?
 
-Foreign key
+Foreign Key is the name given to a table column used to enforce the link between 2 tables. When the column that holds the PK value are referenced by another column in another table this column becomes a FK in the second table.
+
 
 4. What do we need in order to have a _many to many_ relationship between two tables?
-we need multiple records in a table to be associated with multiple records in another table 
+
+To establish a Many to Many relationships occur between 2 tables when multiple records from Table 1 is related to multiple records in table 2.

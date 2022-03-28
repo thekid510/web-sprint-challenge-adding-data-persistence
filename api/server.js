@@ -12,7 +12,14 @@ server.use("/api/projects", projectRouter);
 
 server.use("/api/resources", resourceRouter);
 
-server.use('/api/taskRouter',tasksRouter);
+server.use('/api/tasks',tasksRouter);
+
+server.use('*', (req, res, next) => {
+    next({
+        status: 404,
+        message: 'This endpoint does not exist'
+    })
+})
 
 server.use((err, req, res, next) => {// eslint-disable-line
     res.status(500).json({

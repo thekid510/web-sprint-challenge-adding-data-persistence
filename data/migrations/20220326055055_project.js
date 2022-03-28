@@ -13,9 +13,9 @@ exports.up = async function(knex) {
     })
     .createTable("tasks", (tbl) => {
       tbl.increments("task_id");
-      tbl.string("task_description",128).notNullable();
-      tbl.string("task_notes",128);
-      tbl.boolean("task_completed").defaultTo(0);
+      tbl.string("task_description",255).notNullable();
+      tbl.string("task_notes",255);
+      tbl.boolean("task_completed").defaultTo(false);
       tbl.integer("project_id")
         .unsigned()
         .notNullable()
@@ -23,12 +23,16 @@ exports.up = async function(knex) {
         .inTable("projects")
         .onUpdate("RESTRICT")
         .onDelete("RESTRICT");
-    });
+    })
+    .createTable('project_resources', (tbl) => {
+        tbl.increments('project_resource_id')
+    })
 };
 
 exports.down = async function(knex) {
     await knex.schema
-    .dropTable("tasks")
-    .dropTable("resources")
-    .dropTable("projects");
+    .dropTableIfExists("project_resources")
+    .dropTableIfExists("tasks")
+    .dropTableIfExists("resources")
+    .dropTableIfExists("projects");
 };
